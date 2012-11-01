@@ -80,6 +80,8 @@ public final class Main {
         }
     }
 
+    private Main() {}
+
     private void die() {
         // TODO
 
