@@ -1,5 +1,11 @@
 package net.obnoxint.adsz.puzzle;
 
+import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
+import static org.lwjgl.opengl.GL11.GL_PROJECTION;
+import static org.lwjgl.opengl.GL11.glLoadIdentity;
+import static org.lwjgl.opengl.GL11.glMatrixMode;
+import static org.lwjgl.opengl.GL11.glOrtho;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,7 +19,6 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
-import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -23,7 +28,7 @@ public final class Main {
     public static final class DebugLogger extends Logger {
 
         private DebugLogger() throws SecurityException, IOException {
-            super(LOGGER_NAME_DEBUG, null);
+            super(LOGGER_NAME, null);
             addHandler(new FileHandler("debug.log", true) {
 
                 private Formatter f = null;
@@ -61,7 +66,6 @@ public final class Main {
     public static final int VERSION = 0;
 
     public static final String LOGGER_NAME = "net.obnoxint.adsz.puzzle";
-    public static final String LOGGER_NAME_DEBUG = LOGGER_NAME + ".debug";
 
     private static final int EXIT_CODE_ERROR = -1;
     private static final int EXIT_CODE_OK = 0;
@@ -71,7 +75,7 @@ public final class Main {
     static final int DISPLAY_FPS = 30;
     static final String DISPLAY_TITLE = "adSz - Puzzle";
 
-    public static DebugLogger debugLogger = null;
+    public static DebugLogger logger = null;
 
     private static Main instance = null;
 
@@ -80,17 +84,17 @@ public final class Main {
             instance = new Main();
             if (DEBUG) {
                 try {
-                    debugLogger = new DebugLogger();
+                    logger = new DebugLogger();
                 } catch (SecurityException | IOException e) {
                     JOptionPane.showMessageDialog(null, "An exception occured while initializing the DebugLogger: " + e.getMessage() + "\nThe application must exit now.", "Error", JOptionPane.ERROR_MESSAGE);
                     writeStackTrace(e);
                     System.exit(EXIT_CODE_ERROR);
                 }
-                debugLogger.info("Debugging started.");
+                logger.info("Debugging started.");
             }
             try {
                 if (DEBUG) {
-                    debugLogger.info("Entering init()");
+                    logger.info("Entering init()");
                 }
                 instance.init();
             } catch (final LWJGLException e) {
@@ -100,12 +104,12 @@ public final class Main {
             }
 
             if (DEBUG) {
-                debugLogger.info("Entering run().");
+                logger.info("Entering run().");
             }
             instance.run();
 
             if (DEBUG) {
-                debugLogger.info("Entering die().");
+                logger.info("Entering die().");
             }
             instance.die();
 
@@ -126,7 +130,7 @@ public final class Main {
 
     private void die() {
         if (DEBUG) {
-            debugLogger.info("Destroying Display");
+            logger.info("Destroying Display");
         }
         Display.destroy();
         // TODO
@@ -134,17 +138,17 @@ public final class Main {
 
     private void init() throws LWJGLException {
         if (DEBUG) {
-            debugLogger.info("Creating Display with size " + DISPLAY_WIDTH + "x" + DISPLAY_HEIGHT);
+            logger.info("Creating Display with size " + DISPLAY_WIDTH + "x" + DISPLAY_HEIGHT);
         }
-        
+
         Display.setDisplayMode(new DisplayMode(DISPLAY_WIDTH, DISPLAY_HEIGHT));
         Display.setTitle((DEBUG) ? DISPLAY_TITLE + " v" + VERSION : DISPLAY_TITLE); // Set title depending of debug-mode
         Display.create();
-        
-        if (DEBUG){
-            debugLogger.info("Initializing OpenGL and defining states.");
+
+        if (DEBUG) {
+            logger.info("Initializing OpenGL and defining states.");
         }
-        
+
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         glOrtho(0, DISPLAY_WIDTH, DISPLAY_HEIGHT, 0, 1, -1);
