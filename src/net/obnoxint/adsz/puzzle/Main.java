@@ -10,12 +10,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.FileHandler;
-import java.util.logging.Formatter;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -24,40 +18,6 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
 public final class Main {
-
-    public static final class DebugLogger extends Logger {
-
-        private DebugLogger() throws SecurityException, IOException {
-            super(LOGGER_NAME, null);
-            addHandler(new FileHandler("debug.log", true) {
-
-                private Formatter f = null;
-
-                @Override
-                public Formatter getFormatter() {
-                    if (f == null) {
-                        f = new Formatter() {
-
-                            @Override
-                            public String format(final LogRecord record) {
-                                final StringBuilder sb = new StringBuilder()
-                                        .append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(record.getMillis()))).append(" ")
-                                        .append(record.getLevel()).append(" ")
-                                        .append(record.getThreadID()).append(" ")
-                                        .append(record.getSourceClassName()).append(" ")
-                                        .append(record.getSourceMethodName()).append(" ")
-                                        .append(record.getMessage()).append("\n");
-                                return sb.toString();
-                            }
-
-                        };
-                    }
-                    return f;
-                }
-            });
-        }
-
-    }
 
     /**
      * Debug flag. The application should use the DebugLogger in order to output debug information. Should be set to false before deployment.
