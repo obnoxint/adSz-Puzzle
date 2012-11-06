@@ -30,8 +30,8 @@ public final class Main {
     private static final int EXIT_CODE_ERROR = -1;
     private static final int EXIT_CODE_OK = 0;
 
-    static final int DISPLAY_WIDTH = 800;
-    static final int DISPLAY_HEIGHT = 600;
+    static final int DISPLAY_WIDTH = 1024;
+    static final int DISPLAY_HEIGHT = 768;
     static final int DISPLAY_FPS = 30;
     static final String DISPLAY_TITLE = "adSz - Puzzle";
 
