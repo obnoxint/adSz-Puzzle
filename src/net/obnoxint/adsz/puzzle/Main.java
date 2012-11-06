@@ -27,8 +27,8 @@ public final class Main {
 
     public static final String LOGGER_NAME = "net.obnoxint.adsz.puzzle";
 
-    private static final int EXIT_CODE_ERROR = -1;
-    private static final int EXIT_CODE_OK = 0;
+    static final int EXIT_CODE_ERROR = -1;
+    static final int EXIT_CODE_OK = 0;
 
     static final int DISPLAY_WIDTH = 1024;
     static final int DISPLAY_HEIGHT = 768;
