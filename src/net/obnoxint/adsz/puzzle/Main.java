@@ -117,6 +117,10 @@ public final class Main {
 
     private void run() {
         while (!Display.isCloseRequested()) {
+            if (State.getActiveState() == null){
+                State.setActiveState(State.STATE_INTRO);
+            }
+            State.getActiveState().draw();
             // TODO
             Display.update();
             Display.sync(DISPLAY_FPS);
