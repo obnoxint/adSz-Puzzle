@@ -1,11 +1,11 @@
 package net.obnoxint.adsz.puzzle;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 abstract class State {
 
-    private static List<State> states = new ArrayList<>();
+    private static Map<Integer, State> states = new HashMap<>();
     private static State activeState = null;
 
     static final int STATE_INTRO = 0;
@@ -15,8 +15,8 @@ abstract class State {
 
     private static State getState(final int id) {
         State r = null;
-        if (states.contains(id)) {
-            r = states.get(states.indexOf(id));
+        if (states.containsKey(id)) {
+            r = states.get(id);
         } else {
             switch (id) {
             case STATE_INTRO:
@@ -32,7 +32,9 @@ abstract class State {
                 r = new StatePuzzlePlay();
             break;
             }
-            states.add(r);
+            if (r != null) {
+                states.put(r.id, r);
+            }
         }
         return r;
     }
@@ -49,13 +51,6 @@ abstract class State {
 
     protected State(final int id) {
         this.id = id;
-    }
-
-    @Override
-    public final boolean equals(final Object obj) {
-        if (obj != null && obj instanceof State && ((State) obj).id == id)
-            return true;
-        return false;
     }
 
     abstract void draw();
