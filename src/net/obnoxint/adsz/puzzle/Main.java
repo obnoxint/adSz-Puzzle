@@ -1,8 +1,10 @@
 package net.obnoxint.adsz.puzzle;
 
+import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
 import static org.lwjgl.opengl.GL11.GL_PROJECTION;
 import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
+import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
@@ -120,6 +122,7 @@ public final class Main {
 
     private void run() {
         while (!Display.isCloseRequested()) {
+            glClear(GL_COLOR_BUFFER_BIT);
             if (State.getActiveState() == null) {
                 State.setActiveState(State.STATE_INTRO);
             }
