@@ -2,6 +2,8 @@ package net.obnoxint.adsz.puzzle;
 
 import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
 import static org.lwjgl.opengl.GL11.GL_PROJECTION;
+import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
+import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
@@ -113,11 +115,12 @@ public final class Main {
         glLoadIdentity();
         glOrtho(0, DISPLAY_WIDTH, DISPLAY_HEIGHT, 0, 1, -1);
         glMatrixMode(GL_MODELVIEW);
+        glEnable(GL_TEXTURE_2D);
     }
 
     private void run() {
         while (!Display.isCloseRequested()) {
-            if (State.getActiveState() == null){
+            if (State.getActiveState() == null) {
                 State.setActiveState(State.STATE_INTRO);
             }
             State.getActiveState().draw();
