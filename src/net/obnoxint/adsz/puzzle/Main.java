@@ -126,6 +126,7 @@ public final class Main {
             if (State.getActiveState() == null) {
                 State.setActiveState(State.STATE_INTRO);
             }
+            State.getActiveState().drawBackground();
             State.getActiveState().draw();
             // TODO
             Display.update();
