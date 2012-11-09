@@ -1,21 +1,31 @@
 package net.obnoxint.adsz.puzzle;
 
+import java.io.IOException;
+
 final class StateIntro extends State {
 
-    StateIntro() {
+    private final long started = System.currentTimeMillis();
+        
+    StateIntro() throws IOException {
         super(STATE_INTRO);
     }
 
     @Override
     void draw() {
-        // TODO Auto-generated method stub
-
+        if (System.currentTimeMillis() > started + 1000 * 5){
+            finish();
+        }else{
+            try {
+                synchronized (this) {                    
+                    wait(50L);
+                }
+            } catch (InterruptedException e) {}
+        }
     }
 
     @Override
     void finish() {
-        // TODO Auto-generated method stub
-
+        State.setActiveState(STATE_PUZZLESELECTION);
     }
 
     @Override
@@ -23,5 +33,7 @@ final class StateIntro extends State {
         // TODO Auto-generated method stub
 
     }
+
+    
 
 }
