@@ -50,9 +50,6 @@ public final class Main {
     static Main instance = null;
     static DebugLogger logger = null;
 
-    private static File ressourceFolder = null;
-    private static File puzzleFolder = null;
-
     public static void main(final String[] args) {
         if (instance == null) {
             instance = new Main();
@@ -91,20 +88,6 @@ public final class Main {
         }
     }
 
-    static File getPuzzleFolder() {
-        if (puzzleFolder == null) {
-            puzzleFolder = new File(FILE_NAME_PUZZLEFOLDER);
-        }
-        return puzzleFolder;
-    }
-
-    static File getRessourceFolder() {
-        if (ressourceFolder == null) {
-            ressourceFolder = new File(FILE_NAME_RESSOURCEFOLDER);
-        }
-        return ressourceFolder;
-    }
-
     static void writeStackTrace(final Throwable throwable) {
         final File f = new File("error_" + System.currentTimeMillis());
         try (PrintWriter pw = new PrintWriter(new FileWriter(f))) {
@@ -114,6 +97,8 @@ public final class Main {
         }
     }
 
+    private File ressourceFolder = null;
+    private File puzzleFolder = null;
     private Puzzle[] puzzles = null;
 
     private Main() {}
@@ -160,6 +145,13 @@ public final class Main {
         }
     }
 
+    File getPuzzleFolder() {
+        if (puzzleFolder == null) {
+            puzzleFolder = new File(FILE_NAME_PUZZLEFOLDER);
+        }
+        return puzzleFolder;
+    }
+
     Puzzle[] getPuzzles() {
         if (puzzles == null) {
             final String[] files = getPuzzleFolder().list(new FilenameFilter() {
@@ -177,6 +169,13 @@ public final class Main {
             }
         }
         return puzzles;
+    }
+
+    File getRessourceFolder() {
+        if (ressourceFolder == null) {
+            ressourceFolder = new File(FILE_NAME_RESSOURCEFOLDER);
+        }
+        return ressourceFolder;
     }
 
 }
