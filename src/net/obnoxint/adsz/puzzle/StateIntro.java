@@ -13,7 +13,7 @@ final class StateIntro extends State {
     @Override
     void draw() {
         if (System.currentTimeMillis() > started + 1000 * 5){
-            finish();
+            State.setActiveState(STATE_PUZZLESELECTION);
         }else{
             try {
                 synchronized (this) {                    
@@ -21,11 +21,6 @@ final class StateIntro extends State {
                 }
             } catch (InterruptedException e) {}
         }
-    }
-
-    @Override
-    void finish() {
-        State.setActiveState(STATE_PUZZLESELECTION);
     }
 
     @Override

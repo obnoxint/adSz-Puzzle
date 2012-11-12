@@ -1,19 +1,15 @@
 package net.obnoxint.adsz.puzzle;
 
+import java.io.IOException;
+
 final class StatePuzzleSelection extends State {
 
-    StatePuzzleSelection() {
+    StatePuzzleSelection() throws IOException {
         super(STATE_PUZZLESELECTION);
     }
 
     @Override
     void draw() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    void finish() {
         // TODO Auto-generated method stub
 
     }

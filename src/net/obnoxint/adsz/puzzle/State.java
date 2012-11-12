@@ -96,8 +96,6 @@ abstract class State {
         glEnd();
     }
 
-    abstract void finish();
-
     abstract void handleInput();
 
 }
