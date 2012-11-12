@@ -73,7 +73,9 @@ abstract class State {
 
     protected State(final int id) throws IOException {
         this.id = id;
-        this.bg = TextureLoader.getTexture("PNG", new FileInputStream("res" + File.separator + "bg_" + id + ".png"));
+        try (FileInputStream fis = new FileInputStream(new File(Main.getRessourceFolder(), "bg_" + id + ".png"))){
+            this.bg = TextureLoader.getTexture(Main.TEXTURE_TYPE_PNG, fis);
+        }
     }
 
     abstract void draw();

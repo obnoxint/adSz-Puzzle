@@ -29,7 +29,7 @@ public final class Main {
     public static final boolean DEBUG = true;
     public static final int VERSION = 0;
 
-    public static final String LOGGER_NAME = "net.obnoxint.adsz.puzzle";
+    static final String LOGGER_NAME = "net.obnoxint.adsz.puzzle";
 
     static final int EXIT_CODE_ERROR = -1;
     static final int EXIT_CODE_OK = 0;
@@ -39,9 +39,18 @@ public final class Main {
     static final int DISPLAY_FPS = 30;
     static final String DISPLAY_TITLE = "adSz - Puzzle";
 
-    public static DebugLogger logger = null;
+    static final String FILE_NAME_RESSOURCEFOLDER = "res";
+    static final String FILE_NAME_PUZZLEFOLDER = "puzzle";
+    static final String FILE_EXT_PROPERTIES = ".properties";
+    static final String FILE_EXT_PNG = ".png";
+    
+    static final String TEXTURE_TYPE_PNG = "PNG";
 
-    private static Main instance = null;
+    static Main instance = null;
+    static DebugLogger logger = null;
+
+    private static File ressourceFolder = null;
+    private static File puzzleFolder = null;
 
     public static void main(final String[] args) {
         if (instance == null) {
@@ -79,6 +88,20 @@ public final class Main {
 
             System.exit(EXIT_CODE_OK);
         }
+    }
+
+    static File getPuzzleFolder() {
+        if (puzzleFolder == null) {
+            puzzleFolder = new File(FILE_NAME_PUZZLEFOLDER);
+        }
+        return puzzleFolder;
+    }
+
+    static File getRessourceFolder() {
+        if (ressourceFolder == null) {
+            ressourceFolder = new File(FILE_NAME_RESSOURCEFOLDER);
+        }
+        return ressourceFolder;
     }
 
     static void writeStackTrace(final Throwable throwable) {
