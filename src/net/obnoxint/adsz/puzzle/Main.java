@@ -12,6 +12,7 @@ import static org.lwjgl.opengl.GL11.glOrtho;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -43,7 +44,7 @@ public final class Main {
     static final String FILE_NAME_PUZZLEFOLDER = "puzzle";
     static final String FILE_EXT_PROPERTIES = ".properties";
     static final String FILE_EXT_PNG = ".png";
-    
+
     static final String TEXTURE_TYPE_PNG = "PNG";
 
     static Main instance = null;
@@ -113,6 +114,8 @@ public final class Main {
         }
     }
 
+    private Puzzle[] puzzles = null;
+
     private Main() {}
 
     private void die() {
@@ -155,6 +158,25 @@ public final class Main {
             Display.update();
             Display.sync(DISPLAY_FPS);
         }
+    }
+
+    Puzzle[] getPuzzles() {
+        if (puzzles == null) {
+            final String[] files = getPuzzleFolder().list(new FilenameFilter() {
+
+                @Override
+                public boolean accept(final File dir, final String name) {
+                    return name.endsWith(FILE_EXT_PROPERTIES);
+                }
+
+            });
+            puzzles = new Puzzle[files.length];
+            for (int i = 0; i < files.length; i++) {
+                final String n = files[i];
+                puzzles[i] = new Puzzle(n.substring(0, n.length() - FILE_EXT_PROPERTIES.length()));
+            }
+        }
+        return puzzles;
     }
 
 }
