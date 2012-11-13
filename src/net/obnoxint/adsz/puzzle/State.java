@@ -1,8 +1,15 @@
 package net.obnoxint.adsz.puzzle;
 
+import static org.lwjgl.opengl.GL11.GL_LINE_STRIP;
 import static org.lwjgl.opengl.GL11.GL_QUADS;
+import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glColor3b;
+import static org.lwjgl.opengl.GL11.glColor3f;
+import static org.lwjgl.opengl.GL11.glDisable;
+import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glLineWidth;
 import static org.lwjgl.opengl.GL11.glTexCoord2f;
 import static org.lwjgl.opengl.GL11.glVertex2i;
 
@@ -14,6 +21,7 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
+import org.lwjgl.util.Point;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
@@ -73,9 +81,26 @@ abstract class State {
 
     protected State(final int id) throws IOException {
         this.id = id;
-        try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), "bg_" + id + ".png"))){
+        try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), "bg_" + id + ".png"))) {
             this.bg = TextureLoader.getTexture(Main.TEXTURE_TYPE_PNG, fis);
         }
+    }
+
+    protected void drawOutline(final Box box) {
+        glDisable(GL_TEXTURE_2D);
+        glLineWidth(2f);
+        glColor3b(Main.RGB_OCHER_LIGHT[0], Main.RGB_OCHER_LIGHT[1], Main.RGB_OCHER_LIGHT[2]);
+        for (int i = 0; i < 4; i++) {
+            final Point[] p = box.getEdge(i, 3);
+            glBegin(GL_LINE_STRIP);
+            {
+                glVertex2i(p[0].getX(), p[0].getY());
+                glVertex2i(p[1].getX(), p[1].getY());
+            }
+            glEnd();
+        }
+        glEnable(GL_TEXTURE_2D);
+        glColor3f(1f, 1f, 1f);
     }
 
     abstract void draw();
