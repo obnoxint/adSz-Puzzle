@@ -4,8 +4,6 @@ import java.io.IOException;
 
 final class StatePuzzlePlay extends State {
 
-    int selected = 0;
-    
     StatePuzzlePlay() throws IOException {
         super(STATE_PUZZLEPLAY);
     }

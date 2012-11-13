@@ -4,6 +4,8 @@ import java.io.IOException;
 
 final class StatePuzzleSelection extends State {
 
+    int selected = 0;
+
     StatePuzzleSelection() throws IOException {
         super(STATE_PUZZLESELECTION);
     }
