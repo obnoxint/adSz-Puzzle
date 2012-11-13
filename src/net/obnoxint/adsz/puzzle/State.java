@@ -88,9 +88,9 @@ abstract class State {
             glVertex2i(0, 0);
             glTexCoord2f(1f, 0f);
             glVertex2i(Main.DISPLAY_WIDTH, 0);
-            glTexCoord2f(1f, (float) Main.DISPLAY_HEIGHT / (float) Main.DISPLAY_WIDTH);
+            glTexCoord2f(1f, bg.getHeight());
             glVertex2i(Main.DISPLAY_WIDTH, Main.DISPLAY_HEIGHT);
-            glTexCoord2f(0f, (float) Main.DISPLAY_HEIGHT / (float) Main.DISPLAY_WIDTH);
+            glTexCoord2f(0f, bg.getHeight());
             glVertex2i(0, Main.DISPLAY_HEIGHT);
         }
         glEnd();
