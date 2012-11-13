@@ -49,7 +49,7 @@ public final class Main {
     static final String FILE_EXT_PROPERTIES = ".properties";
     static final String FILE_EXT_PNG = ".png";
 
-    static final int[] RGB_OCHER_LIGHT = { 255, 215, 73 };
+    static final byte[] RGB_OCHER_LIGHT = { 127, 87, -55 };
 
     static final String TEXTURE_TYPE_PNG = "PNG";
 
