@@ -25,6 +25,7 @@ import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
@@ -147,6 +148,8 @@ public final class Main {
             glClear(GL_COLOR_BUFFER_BIT);
             if (State.getActiveState() == null) {
                 State.setActiveState(State.STATE_INTRO);
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+                State.setActiveState(State.STATE_PUZZLESELECTION);
             }
             State.getActiveState().drawBackground();
             State.getActiveState().draw();
