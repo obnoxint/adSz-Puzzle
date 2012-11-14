@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
@@ -110,6 +111,14 @@ public final class Main {
     private File puzzleFolder = null;
     private Puzzle[] puzzles = null;
 
+    // State variables for mouse cursor position, movement and button state
+    int mouse_abs_x = 0;
+    int mouse_abs_y = 0;
+    int mouse_dyn_x = 0;
+    int mouse_dyn_y = 0;
+    boolean mouse_but_l = false;
+    boolean mouse_but_r = false;
+
     private Main() {}
 
     private void die() {
@@ -143,6 +152,15 @@ public final class Main {
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
 
+    private void pollMouse() {
+        mouse_abs_x = Mouse.getX();
+        mouse_abs_y = Display.getHeight() - Mouse.getY(); // Y-coordinate is based on the "bottom".
+        mouse_dyn_x = Mouse.getDX();
+        mouse_dyn_y = Mouse.getDY();
+        mouse_but_l = Mouse.isButtonDown(0);
+        mouse_but_r = Mouse.isButtonDown(1);
+    }
+
     private void run() {
         while (!Display.isCloseRequested()) {
             glClear(GL_COLOR_BUFFER_BIT);
@@ -151,9 +169,10 @@ public final class Main {
             } else if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
                 State.setActiveState(State.STATE_PUZZLESELECTION);
             }
+            pollMouse();
+            State.getActiveState().handleInput();
             State.getActiveState().drawBackground();
             State.getActiveState().draw();
-            // TODO
             Display.update();
             Display.sync(DISPLAY_FPS);
         }
