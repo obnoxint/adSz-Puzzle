@@ -35,7 +35,7 @@ abstract class State {
     static final int STATE_PIECESIZESELECTION = 2;
     static final int STATE_PUZZLEPLAY = 3;
 
-    private static State getState(final int id) {
+    protected static State getState(final int id) {
         State r = null;
         if (states.containsKey(id)) {
             r = states.get(id);
@@ -78,7 +78,7 @@ abstract class State {
 
     final int id;
     final Texture bg;
-    
+
     protected Box outlined = null;
 
     protected State(final int id) throws IOException {
@@ -89,21 +89,21 @@ abstract class State {
     }
 
     protected void drawOutline() {
-        if (outlined != null){
-        glDisable(GL_TEXTURE_2D);
-        glLineWidth(2f);
-        glColor3b(Main.RGB_OCHER_LIGHT[0], Main.RGB_OCHER_LIGHT[1], Main.RGB_OCHER_LIGHT[2]);
-        for (int i = 0; i < 4; i++) {
-            final Point[] p = outlined.getEdge(i, 3);
-            glBegin(GL_LINE_STRIP);
-            {
-                glVertex2i(p[0].getX(), p[0].getY());
-                glVertex2i(p[1].getX(), p[1].getY());
+        if (outlined != null) {
+            glDisable(GL_TEXTURE_2D);
+            glLineWidth(2f);
+            glColor3b(Main.RGB_OCHER_LIGHT[0], Main.RGB_OCHER_LIGHT[1], Main.RGB_OCHER_LIGHT[2]);
+            for (int i = 0; i < 4; i++) {
+                final Point[] p = outlined.getEdge(i, 3);
+                glBegin(GL_LINE_STRIP);
+                {
+                    glVertex2i(p[0].getX(), p[0].getY());
+                    glVertex2i(p[1].getX(), p[1].getY());
+                }
+                glEnd();
             }
-            glEnd();
-        }
-        glEnable(GL_TEXTURE_2D);
-        glColor3f(1f, 1f, 1f);
+            glEnable(GL_TEXTURE_2D);
+            glColor3f(1f, 1f, 1f);
         }
     }
 
