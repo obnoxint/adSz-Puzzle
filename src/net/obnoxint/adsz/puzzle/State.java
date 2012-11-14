@@ -78,6 +78,8 @@ abstract class State {
 
     final int id;
     final Texture bg;
+    
+    protected Box outlined = null;
 
     protected State(final int id) throws IOException {
         this.id = id;
@@ -86,12 +88,13 @@ abstract class State {
         }
     }
 
-    protected void drawOutline(final Box box) {
+    protected void drawOutline() {
+        if (outlined != null){
         glDisable(GL_TEXTURE_2D);
         glLineWidth(2f);
         glColor3b(Main.RGB_OCHER_LIGHT[0], Main.RGB_OCHER_LIGHT[1], Main.RGB_OCHER_LIGHT[2]);
         for (int i = 0; i < 4; i++) {
-            final Point[] p = box.getEdge(i, 3);
+            final Point[] p = outlined.getEdge(i, 3);
             glBegin(GL_LINE_STRIP);
             {
                 glVertex2i(p[0].getX(), p[0].getY());
@@ -101,6 +104,7 @@ abstract class State {
         }
         glEnable(GL_TEXTURE_2D);
         glColor3f(1f, 1f, 1f);
+        }
     }
 
     abstract void draw();
