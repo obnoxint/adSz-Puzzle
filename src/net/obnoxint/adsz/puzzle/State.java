@@ -74,6 +74,9 @@ abstract class State {
     static void setActiveState(final int id) {
         Main.logger.info("Activating state " + id + ".");
         activeState = getState(id);
+        if (id == STATE_PUZZLEPLAY){
+            ((StatePuzzlePlay)activeState).init();
+        }
     }
 
     final int id;
