@@ -170,6 +170,10 @@ final class StatePuzzleSelection extends State {
             outlined = PUZZLE;
             if (mb) {
                 State.setActiveState(State.STATE_PIECESIZESELECTION);
+                try { // Try to prevent accidently selecting a difficulty in the next state.
+                    Main.instance.mouse_but_l = false;
+                    Thread.sleep(200);
+                } catch (final InterruptedException e) {}
             }
         } else {
             outlined = null;
