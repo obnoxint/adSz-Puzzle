@@ -66,6 +66,24 @@ class Box {
         return (point.getX() >= upperLeft.getX() && point.getX() <= lowerRight.getX() && point.getY() >= upperLeft.getY() && point.getY() <= lowerRight.getY());
     }
 
+    void move(final int x, final int y) {
+        final int w = getWidth();
+        final int h = getHeight();
+        final Point ul = new Point(upperLeft.getX() + x, upperLeft.getY() + y);
+        final Point lr = new Point(ul.getX() + w, ul.getY() + h);
+        upperLeft = ul;
+        lowerRight = lr;
+    }
+
+    void moveTo(final int x, final int y) {
+        final int w = getWidth();
+        final int h = getHeight();
+        final Point ul = new Point(x, y);
+        final Point lr = new Point(ul.getX() + w, ul.getY() + h);
+        upperLeft = ul;
+        lowerRight = lr;
+    }
+
     void setLowerRight(final Point lowerRight) {
         this.lowerRight = lowerRight;
     }
