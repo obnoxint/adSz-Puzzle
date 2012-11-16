@@ -156,7 +156,7 @@ public final class Main {
         mouse_abs_x = Mouse.getX();
         mouse_abs_y = Display.getHeight() - Mouse.getY(); // Y-coordinate is based on the "bottom".
         mouse_dyn_x = Mouse.getDX();
-        mouse_dyn_y = Mouse.getDY();
+        mouse_dyn_y = -Mouse.getDY();
         mouse_but_l = Mouse.isButtonDown(0);
         mouse_but_r = Mouse.isButtonDown(1);
     }
