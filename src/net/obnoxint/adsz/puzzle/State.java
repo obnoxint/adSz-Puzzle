@@ -27,6 +27,8 @@ import org.newdawn.slick.opengl.TextureLoader;
 
 abstract class State {
 
+    private static final String FILE_BG_PREFIX = "bg_";
+
     private static Map<Integer, State> states = new HashMap<>();
     private static State activeState = null;
 
@@ -85,7 +87,7 @@ abstract class State {
 
     protected State(final int id) throws IOException {
         this.id = id;
-        try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), "bg_" + id + ".png"))) {
+        try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), FILE_BG_PREFIX + id + Main.FILE_EXT_PNG))) {
             this.bg = TextureLoader.getTexture(Main.TEXTURE_TYPE_PNG, fis);
         }
     }

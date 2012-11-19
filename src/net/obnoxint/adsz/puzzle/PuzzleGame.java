@@ -52,7 +52,8 @@ final class PuzzleGame {
 
     private Point getSnapPoint(final Piece p) {
         final int s = difficulty.size;
-        return new Point((p.x * s) + 112, (p.y * s) + 84);
+        final Point sam = StatePuzzlePlay.SOLVE_AREA.getUpperLeft(); // margin between solve area and screen border
+        return new Point((p.x * s) + sam.getX(), (p.y * s) + sam.getY());
     }
 
     void checkSnap(final Piece p) {

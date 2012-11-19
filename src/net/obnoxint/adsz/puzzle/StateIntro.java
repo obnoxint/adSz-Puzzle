@@ -4,6 +4,8 @@ import java.io.IOException;
 
 final class StateIntro extends State {
 
+    private static final int DELAY = 5000;
+
     private final long started = System.currentTimeMillis();
 
     StateIntro() throws IOException {
@@ -12,7 +14,7 @@ final class StateIntro extends State {
 
     @Override
     void draw() {
-        if (System.currentTimeMillis() > started + 1000 * 5) {
+        if (System.currentTimeMillis() > started + DELAY) {
             State.setActiveState(STATE_PUZZLESELECTION);
         } else {
             try {

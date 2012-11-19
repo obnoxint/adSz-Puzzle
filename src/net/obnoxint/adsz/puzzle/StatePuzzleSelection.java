@@ -18,6 +18,9 @@ import org.newdawn.slick.opengl.TextureLoader;
 
 final class StatePuzzleSelection extends State {
 
+    private static final String RES_ARROW_PREV = "n" + Main.FILE_EXT_PNG;
+    private static final String RES_ARROW_NEXT = "p" + Main.FILE_EXT_PNG;
+
     private static final Box ARROW_PREV = new Box(new Point(81, 325), new Point(131, 525));
     private static final Box ARROW_NEXT = new Box(new Point(893, 325), new Point(943, 525));
     private static final Box PUZZLE = new Box(new Point(212, 200), new Point(812, 650));
@@ -85,7 +88,7 @@ final class StatePuzzleSelection extends State {
 
     private Texture getArrowNext() {
         if (arrowNext == null) {
-            try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), "n" + Main.FILE_EXT_PNG))) {
+            try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), RES_ARROW_NEXT))) {
                 arrowNext = TextureLoader.getTexture(Main.TEXTURE_TYPE_PNG, fis);
             } catch (final IOException e) {
                 JOptionPane.showMessageDialog(null, "Could not load texture: n.png", "Error", JOptionPane.ERROR_MESSAGE);
@@ -98,7 +101,7 @@ final class StatePuzzleSelection extends State {
 
     private Texture getArrowPrev() {
         if (arrowPrev == null) {
-            try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), "p" + Main.FILE_EXT_PNG))) {
+            try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), RES_ARROW_PREV))) {
                 arrowPrev = TextureLoader.getTexture(Main.TEXTURE_TYPE_PNG, fis);
             } catch (final IOException e) {
                 JOptionPane.showMessageDialog(null, "Could not load texture: p.png", "Error", JOptionPane.ERROR_MESSAGE);

@@ -23,8 +23,8 @@ final class Piece extends Box implements Comparable<Piece> {
     }
 
     void checkPositioning() {
-        final int rm = Main.DISPLAY_WIDTH - 15;  // right margin
-        final int bm = Main.DISPLAY_HEIGHT - 15; // bottom margin
+        final int rm = Main.DISPLAY_WIDTH - BORDER_MARGIN;  // right margin
+        final int bm = Main.DISPLAY_HEIGHT - BORDER_MARGIN; // bottom margin
         if (getLowerRight().getX() < BORDER_MARGIN) {
             moveTo(BORDER_MARGIN - getWidth(), getUpperLeft().getY());
         }

@@ -18,7 +18,7 @@ import org.newdawn.slick.opengl.Texture;
 
 final class StatePuzzlePlay extends State {
 
-    private static final Box SOLVE_AREA = new Box(new Point(112, 84), new Point(912, 684));
+    static final Box SOLVE_AREA = new Box(new Point(112, 84), new Point(912, 684));
 
     PuzzleGame game;
     long started = -1L;
