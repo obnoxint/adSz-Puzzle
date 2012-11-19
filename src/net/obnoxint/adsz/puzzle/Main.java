@@ -163,16 +163,22 @@ public final class Main {
 
     private void run() {
         while (!Display.isCloseRequested()) {
-            glClear(GL_COLOR_BUFFER_BIT);
-            if (State.getActiveState() == null) {
-                State.setActiveState(State.STATE_INTRO);
-            } else if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
-                State.setActiveState(State.STATE_PUZZLESELECTION);
+            if (Display.isActive()) {
+                glClear(GL_COLOR_BUFFER_BIT);
+                if (State.getActiveState() == null) {
+                    State.setActiveState(State.STATE_INTRO);
+                } else if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+                    State.setActiveState(State.STATE_PUZZLESELECTION);
+                }
+                pollMouse();
+                State.getActiveState().handleInput();
+                State.getActiveState().drawBackground();
+                State.getActiveState().draw();
+            } else {
+                try {
+                    Thread.sleep(50);
+                } catch (final InterruptedException e) {}
             }
-            pollMouse();
-            State.getActiveState().handleInput();
-            State.getActiveState().drawBackground();
-            State.getActiveState().draw();
             Display.update();
             Display.sync(DISPLAY_FPS);
         }
