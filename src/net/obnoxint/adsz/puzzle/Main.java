@@ -59,7 +59,7 @@ public final class Main {
             try {
                 instance.init();
             } catch (final LWJGLException e) {
-                JOptionPane.showMessageDialog(null, "An exception occured while initializing the application. An error-report will be saved.", "Error during initialization", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Beim Starten der Anwendung ist ein Problem aufgetreten: " + e.getLocalizedMessage() + "\n\nEin Fehlerbericht wird erzeugt.", "Initialisierungsfehler", JOptionPane.ERROR_MESSAGE);
                 writeStackTrace(e);
                 System.exit(EXIT_CODE_ERROR);
             }
@@ -73,8 +73,10 @@ public final class Main {
         final File f = new File("error_" + System.currentTimeMillis());
         try (PrintWriter pw = new PrintWriter(new FileWriter(f))) {
             throwable.printStackTrace(pw);
+            JOptionPane.showMessageDialog(null, "Ein Fehlerbericht wurde gespeichert:\n" + f.getAbsolutePath());
         } catch (final IOException e) {
-            JOptionPane.showMessageDialog(null, "Unable to store stacktrace to this file:\n" + f.getAbsolutePath(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ein Fehlerbericht konnte nicht gespeichert werden. Bitte überprüfen Sie, ob Sie über die notwendigen Rechte zum Schreiben der Datei verfügen:\n"
+                    + f.getAbsolutePath(), "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }
 

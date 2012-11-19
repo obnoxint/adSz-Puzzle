@@ -61,7 +61,7 @@ abstract class State {
                     states.put(r.id, r);
                 }
             } catch (final IOException e) {
-                JOptionPane.showMessageDialog(null, "Unable to initialize state " + id + ": " + e.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Beim initialisieren des Spielzustands " + id + " ist ein Problem aufgetreten: " + e.getLocalizedMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
                 Main.writeStackTrace(e);
                 System.exit(Main.EXIT_CODE_ERROR);
             }

@@ -29,7 +29,8 @@ final class Puzzle {
             if (background)
                 return null;
             else {
-                JOptionPane.showMessageDialog(null, "Unable to load texture for Puzzle \"" + properties.getProperty(PROPERTY_TITLE) + "\": " + e.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Die Textur für das Puzzle \"" + properties.getProperty(PROPERTY_TITLE) + "\" konnte nicht geladen werden: "
+                        + e.getLocalizedMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
                 Main.writeStackTrace(e);
                 System.exit(Main.EXIT_CODE_ERROR);
             }
@@ -42,7 +43,7 @@ final class Puzzle {
         try (FileInputStream fis = new FileInputStream(new File(Main.instance.getPuzzleFolder(), name + Main.FILE_EXT_PROPERTIES))) {
             r.load(fis);
         } catch (final IOException e) {
-            JOptionPane.showMessageDialog(null, "Unable to load properties for \"" + name + "\": " + e.getLocalizedMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Die Eigenschaften-Datei von \"" + name + "\" konnte nicht geladen werden: " + e.getLocalizedMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
             Main.writeStackTrace(e);
             System.exit(Main.EXIT_CODE_ERROR);
         }

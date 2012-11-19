@@ -91,7 +91,7 @@ final class StatePuzzleSelection extends State {
             try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), RES_ARROW_NEXT))) {
                 arrowNext = TextureLoader.getTexture(Main.TEXTURE_TYPE_PNG, fis);
             } catch (final IOException e) {
-                JOptionPane.showMessageDialog(null, "Could not load texture: n.png", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Textur konnte nicht geladen werden: " + RES_ARROW_NEXT, "Fehler", JOptionPane.ERROR_MESSAGE);
                 Main.writeStackTrace(e);
                 System.exit(Main.EXIT_CODE_ERROR);
             }
@@ -104,7 +104,7 @@ final class StatePuzzleSelection extends State {
             try (FileInputStream fis = new FileInputStream(new File(Main.instance.getRessourceFolder(), RES_ARROW_PREV))) {
                 arrowPrev = TextureLoader.getTexture(Main.TEXTURE_TYPE_PNG, fis);
             } catch (final IOException e) {
-                JOptionPane.showMessageDialog(null, "Could not load texture: p.png", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Textur konnte nicht geladen werden: " + RES_ARROW_PREV, "Fehler", JOptionPane.ERROR_MESSAGE);
                 Main.writeStackTrace(e);
                 System.exit(Main.EXIT_CODE_ERROR);
             }
