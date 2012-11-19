@@ -16,6 +16,12 @@ class Box {
         this.lowerRight = lowerRight;
     }
 
+    int getDistanceToPoint(final Point p) {
+        final int dx = Math.abs(p.getX() - getUpperLeft().getX());
+        final int dy = Math.abs(p.getY() - getUpperLeft().getY());
+        return Math.round((float) Math.sqrt((((float) dx * dx) + ((float) dy * dy))));
+    }
+
     Point[] getEdge(final int edge, final int offset) {
         final Point[] r = new Point[2];
         switch (edge) {
