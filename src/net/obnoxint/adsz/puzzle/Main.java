@@ -32,13 +32,7 @@ import org.lwjgl.opengl.DisplayMode;
 
 public final class Main {
 
-    /**
-     * Debug flag. The application should use the DebugLogger in order to output debug information. Should be set to false before deployment.
-     */
-    public static final boolean DEBUG = true;
     public static final int VERSION = 0;
-
-    static final String LOGGER_NAME = "net.obnoxint.adsz.puzzle";
 
     static final int EXIT_CODE_ERROR = -1;
     static final int EXIT_CODE_OK = 0;
@@ -58,42 +52,19 @@ public final class Main {
     static final String TEXTURE_TYPE_PNG = "PNG";
 
     static Main instance = null;
-    static DebugLogger logger = null;
 
     public static void main(final String[] args) {
         if (instance == null) {
             instance = new Main();
-            if (DEBUG) {
-                try {
-                    logger = new DebugLogger();
-                } catch (SecurityException | IOException e) {
-                    JOptionPane.showMessageDialog(null, "An exception occured while initializing the DebugLogger: " + e.getMessage() + "\nThe application must exit now.", "Error", JOptionPane.ERROR_MESSAGE);
-                    writeStackTrace(e);
-                    System.exit(EXIT_CODE_ERROR);
-                }
-                logger.info("Debugging started.");
-            }
             try {
-                if (DEBUG) {
-                    logger.info("Entering init()");
-                }
                 instance.init();
             } catch (final LWJGLException e) {
                 JOptionPane.showMessageDialog(null, "An exception occured while initializing the application. An error-report will be saved.", "Error during initialization", JOptionPane.ERROR_MESSAGE);
                 writeStackTrace(e);
                 System.exit(EXIT_CODE_ERROR);
             }
-
-            if (DEBUG) {
-                logger.info("Entering run().");
-            }
             instance.run();
-
-            if (DEBUG) {
-                logger.info("Entering die().");
-            }
             instance.die();
-
             System.exit(EXIT_CODE_OK);
         }
     }
@@ -122,25 +93,14 @@ public final class Main {
     private Main() {}
 
     private void die() {
-        if (DEBUG) {
-            logger.info("Destroying Display");
-        }
         Display.destroy();
-        // TODO
     }
 
     private void init() throws LWJGLException {
-        if (DEBUG) {
-            logger.info("Creating Display with size " + DISPLAY_WIDTH + "x" + DISPLAY_HEIGHT);
-        }
 
         Display.setDisplayMode(new DisplayMode(DISPLAY_WIDTH, DISPLAY_HEIGHT));
-        Display.setTitle((DEBUG) ? DISPLAY_TITLE + " v" + VERSION : DISPLAY_TITLE); // Set title depending of debug-mode
+        Display.setTitle(DISPLAY_TITLE);
         Display.create();
-
-        if (DEBUG) {
-            logger.info("Initializing OpenGL and defining states.");
-        }
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
