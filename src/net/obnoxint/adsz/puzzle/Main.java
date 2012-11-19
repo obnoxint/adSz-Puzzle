@@ -32,7 +32,7 @@ import org.lwjgl.opengl.DisplayMode;
 
 public final class Main {
 
-    public static final int VERSION = 0;
+    public static final int VERSION = 1;
 
     static final int EXIT_CODE_ERROR = -1;
     static final int EXIT_CODE_OK = 0;
