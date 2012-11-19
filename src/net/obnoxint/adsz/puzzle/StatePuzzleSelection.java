@@ -18,8 +18,8 @@ import org.newdawn.slick.opengl.TextureLoader;
 
 final class StatePuzzleSelection extends State {
 
-    private static final String RES_ARROW_PREV = "n" + Main.FILE_EXT_PNG;
-    private static final String RES_ARROW_NEXT = "p" + Main.FILE_EXT_PNG;
+    private static final String RES_ARROW_PREV = "p" + Main.FILE_EXT_PNG;
+    private static final String RES_ARROW_NEXT = "n" + Main.FILE_EXT_PNG;
 
     private static final Box ARROW_PREV = new Box(new Point(81, 325), new Point(131, 525));
     private static final Box ARROW_NEXT = new Box(new Point(893, 325), new Point(943, 525));
