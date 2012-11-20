@@ -39,7 +39,7 @@ public final class Main {
 
     static final int DISPLAY_WIDTH = 1024;
     static final int DISPLAY_HEIGHT = 768;
-    static final int DISPLAY_FPS = 30;
+    static final int DISPLAY_FPS = 60;
     static final String DISPLAY_TITLE = "adSz - Puzzle";
 
     static final String FILE_NAME_RESSOURCEFOLDER = "res";
