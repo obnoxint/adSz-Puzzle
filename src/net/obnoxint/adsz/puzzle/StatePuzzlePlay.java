@@ -84,7 +84,7 @@ final class StatePuzzlePlay extends State {
         final long t = System.currentTimeMillis() - started;
         final int a = JOptionPane.showConfirmDialog(null, "Glückwunsch! Du hast das Puzzle innerhalb von "
                 + Math.round(t / 1000f)
-                + " Sekunden gelöst!\n\nMöchtest du dieses Puzzle noch einmal lösen? Klicke auf \"Ja\" wenn du dieses Puzzle noch einmal lösen möchtest oder auf \"Nein\", um zur Puzzleauswahl zurückzukehren.", "Du hast es geschafft! "
+                + " Sekunden gelöst!\n\nMöchtest du dieses Puzzle noch einmal lösen?\nKlicke auf \"Ja\" wenn du dieses Puzzle noch einmal lösen möchtest\noder auf \"Nein\", um zur Puzzleauswahl zurückzukehren.", "Du hast es geschafft! "
                 + game.puzzle.title, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
             init();
