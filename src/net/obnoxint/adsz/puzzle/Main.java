@@ -90,7 +90,6 @@ public final class Main {
     int mouse_dyn_x = 0;
     int mouse_dyn_y = 0;
     boolean mouse_but_l = false;
-    boolean mouse_but_r = false;
 
     private Main() {}
 
@@ -120,7 +119,6 @@ public final class Main {
         mouse_dyn_x = Mouse.getDX();
         mouse_dyn_y = -Mouse.getDY();
         mouse_but_l = Mouse.isButtonDown(0);
-        mouse_but_r = Mouse.isButtonDown(1);
     }
 
     private void run() {
