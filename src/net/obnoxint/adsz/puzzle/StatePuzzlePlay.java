@@ -114,7 +114,12 @@ final class StatePuzzlePlay extends State {
         final Piece p = findHoveredSprite(mx, my);
         final Piece s = game.selected;
         if (s != null) {
-            game.checkSnap(s);
+            if (mbl) { // fixes losing of focus when moving the mouse too fast.
+                s.move(mdx, mdy);
+                return;
+            } else {
+                game.checkSnap(s);
+            }
         }
         if (p != null) {
             if (mbl) {
