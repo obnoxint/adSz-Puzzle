@@ -30,6 +30,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.newdawn.slick.UnicodeFont;
 
 public final class Main {
 
@@ -85,6 +86,8 @@ public final class Main {
     private File puzzleFolder = null;
     private Puzzle[] puzzles = null;
 
+    UnicodeFont font = null;
+
     // State variables for mouse cursor position, movement and button state
     int mouse_abs_x = 0;
     int mouse_abs_y = 0;
@@ -113,6 +116,7 @@ public final class Main {
         glEnable(GL_TEXTURE_2D);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     }
 
     private void pollMouse() {

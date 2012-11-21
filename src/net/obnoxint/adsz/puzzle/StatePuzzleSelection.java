@@ -24,6 +24,7 @@ final class StatePuzzleSelection extends State {
     private static final Box ARROW_PREV = new Box(new Point(81, 325), new Point(131, 525));
     private static final Box ARROW_NEXT = new Box(new Point(893, 325), new Point(943, 525));
     private static final Box PUZZLE = new Box(new Point(212, 200), new Point(812, 650));
+    private static final Point TITLE_POS = new Point(128, 100);
 
     private boolean switchCooldown = false;
     private Texture arrowPrev = null;
@@ -84,6 +85,10 @@ final class StatePuzzleSelection extends State {
             glVertex2i(PUZZLE.getUpperLeft().getX(), PUZZLE.getUpperLeft().getY() + PUZZLE.getHeight());
         }
         glEnd();
+    }
+
+    private void drawTitle() {
+        Main.instance.font.drawString(TITLE_POS.getX(), TITLE_POS.getY(), Main.instance.getPuzzles()[selected].title);
     }
 
     private Texture getArrowNext() {
@@ -149,6 +154,7 @@ final class StatePuzzleSelection extends State {
     @Override
     void draw() {
         drawPuzzle();
+        drawTitle();
         drawArrowNext();
         drawArrowPrev();
         drawOutline();
