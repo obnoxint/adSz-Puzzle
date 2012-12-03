@@ -22,7 +22,7 @@ final class Piece extends Box implements Comparable<Piece> {
         return lastClicked == o.lastClicked ? 0 : lastClicked > o.lastClicked ? 1 : -1;
     }
 
-    void checkPositioning() {
+    private void checkPositioning() {
         final int rm = Main.DISPLAY_WIDTH - BORDER_MARGIN;  // right margin
         final int bm = Main.DISPLAY_HEIGHT - BORDER_MARGIN; // bottom margin
         if (getLowerRight().getX() < BORDER_MARGIN) {
@@ -37,6 +37,12 @@ final class Piece extends Box implements Comparable<Piece> {
         if (getUpperLeft().getY() > bm) {
             moveTo(getUpperLeft().getX(), bm);
         }
+    }
+
+    @Override
+    void move(final int x, final int y) {
+        super.move(x, y);
+        checkPositioning();
     }
 
 }

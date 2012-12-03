@@ -127,7 +127,6 @@ final class StatePuzzlePlay extends State {
                     p.lastClicked = System.currentTimeMillis();
                     game.selected = p;
                     p.move(mdx, mdy);
-                    p.checkPositioning();
                 }
             }
         } else {
