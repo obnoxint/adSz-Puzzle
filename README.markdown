@@ -1,4 +1,4 @@
-# adSz - Puzzle
+# adSz - Puzzle (Wuhli-Edition)
 
 ## Lizenz
 Der Quellcode, die Binärdateien und die Ressourcen im Verzeichnis _/res_ des
@@ -161,3 +161,35 @@ Bitte machen Sie im Fall eines Problemberichts folgende Angaben:
 * Falls vorhanden, Inhalt der _error\_[Zahl].txt_-Datei.
 * Welche Aktionen Sie durchgeführt haben, bevor der Fehler aufgetreten ist.
 
+## Wuhli-Edition
+Der Wuhli-Kinderclub ist ein im Rahmen einer gemeinnützigen Arbeitsgelegenheit
+im Februar 2013 startendes Projekt zur Unterstützung der Bildungs- und
+Erziehungsarbeit in Kindertagesstätten, Grundschulen und Familien.
+
+Die im Rahmen des Wuhli-Kinderclubs geleisteten Arbeiten sind ausschließlich
+zusätzliche und wettbewerbsneutrale Angebote zur:
+
+* Bereicherung der Kultur- und Freizeitangebote für Kinder
+* Ausprägung von Heimatgefühl und Verbundenheit im Stadtbezirk
+* Unterstützung der Erziehungs- und Bildungsarbeit des pädagogischen
+Fachpersonals in Kindertagesstätten, Vorschulen und Grundschulen im Stadtbezirk
+Marzahn-Hellersdorf
+
+Die Projektumsetzung erfolgt unter Einbeziehung der Kinder der Teilnehmer,
+interessierter Eltern, Großeltern und nach Absprache mit interessierten Kitas
+und Schulen.
+
+Die Akteure dieses Projekts sind erwerbsfähige Leistungsberechtigte
+(Ausbildungs-/Arbeitssuchende) des Stadtbezirks. Die bewusst konzipierte
+altersbezogene Durchmischung der Teilnehmer und die Einbeziehung von Kindern,
+Eltern und Großeltern verleihen dem Projekt einen generationsübergreifenden
+Charakter.
+
+Der konzeptionelle Grundgedanke dieses AGH-Projekts basiert auf einem Lese-,
+Spiel-, Lern- und Abenteurset rund um ein Kinderbuch mit der zentralen
+Identifikationsfigur Winzel Wuhli, der auf abenteuerliche Weise den Stadtbezirk
+Marzahn-Hellersdorf bzw. die Region entlang der Wuhle mit ihren Tieren, Pflanzen
+und Sehenswürdigkeiten entdeckt. Die Idee in Form eines Kinderbuchs, darauf
+aufbauenden Hand- und Fingerpuppen, begleitenden Sachtexten und verschiedenen
+Spaß- und Lernspielen für Klein und Groß wird im Rahmen des "Wuhli-Kinderclubs"
+entwickelt und umgesetzt.
