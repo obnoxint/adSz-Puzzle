@@ -160,4 +160,3 @@ Bitte machen Sie im Fall eines Problemberichts folgende Angaben:
 * Programmversion
 * Falls vorhanden, Inhalt der _error\_[Zahl].txt_-Datei.
 * Welche Aktionen Sie durchgeführt haben, bevor der Fehler aufgetreten ist.
-
