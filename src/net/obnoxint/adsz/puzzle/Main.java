@@ -34,7 +34,7 @@ import org.newdawn.slick.UnicodeFont;
 
 public final class Main {
 
-    public static final int VERSION = 3;
+    public static final int VERSION = 4;
 
     static final int EXIT_CODE_ERROR = -1;
     static final int EXIT_CODE_OK = 0;
