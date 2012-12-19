@@ -55,8 +55,8 @@ Hardware:
 * Maus oder vergleichbares Eingabegerät
 
 ## Installation
-1. Laden Sie die jeweils aktuellste Distribution von der Seite
-[_Downloads_](https://github.com/obnoxint/adSz-Puzzle/downloads) herunter.
+1. Laden Sie die jeweils aktuellste Distribution herunter. Eine Liste mit
+Quellen finden Sie am Ende.
 2. Entpacken Sie den Inhalt der .zip-Datei in ein beliebiges Verzeichnis. Achten
 Sie darauf, dass Ihr Benutzerkonto für dieses Verzeichnis über Lese- und
 Schreibrechte verfügt.
@@ -193,3 +193,8 @@ und Sehenswürdigkeiten entdeckt. Die Idee in Form eines Kinderbuchs, darauf
 aufbauenden Hand- und Fingerpuppen, begleitenden Sachtexten und verschiedenen
 Spaß- und Lernspielen für Klein und Groß wird im Rahmen des "Wuhli-Kinderclubs"
 entwickelt und umgesetzt.
+
+## Downloads
+Sie können adSz-Puzzle von folgenden Quellen beziehen:
+
+* Website von obnoxint: http://files.obnoxint.net/index.php?dir=adsz/puzzle/
